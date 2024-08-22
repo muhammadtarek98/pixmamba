@@ -223,9 +223,7 @@ dependencies:
       - ninja==1.11.1.1
       - numba==0.59.1
       - openai-clip==1.0.1
-      - opencv-contrib-python==4.9.0.80
-      - opencv-python==4.9.0.80
-      - opencv-python-headless==4.9.0.80
+
       - opendatalab==0.0.10
       - openmim==0.3.9
       - openxlab==0.0.38
