@@ -702,8 +702,8 @@ class DataPreprocessor(ImgDataPreprocessor):
                                       data_samples: Union[SampleList,
                                                           DataSample, None],
                                       key: str) -> Tensor:
-        """De-norm and de-convert channel order. Noted that, we de-norm first,
-        and then de-conversion, since mean and std used in normalization is
+        """De-norm and deconv-convert channel order. Noted that, we deconv-norm first,
+        and then deconv-conversion, since mean and std used in normalization is
         based on channel order after conversion.
 
         Args:

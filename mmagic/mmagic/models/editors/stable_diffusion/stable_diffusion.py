@@ -321,7 +321,7 @@ class StableDiffusion(BaseModel):
         return {'samples': image}
 
     def output_to_pil(self, image) -> List[Image.Image]:
-        """Convert output tensor to PIL image. Output tensor will be de-normed
+        """Convert output tensor to PIL image. Output tensor will be deconv-normed
         to [0, 255] by `DataPreprocessor.destruct`. Due to no `data_samples` is
         passed, color order conversion will not be performed.
 
