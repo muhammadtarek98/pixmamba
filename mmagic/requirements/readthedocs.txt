@@ -9,6 +9,3 @@ regex
 scikit-image
 tabulate
 titlecase
-torch
-torchvision
-tqdm
