@@ -121,7 +121,7 @@ class TestEqualizedLRConvUpModule:
             kernel_size=3,
             padding=1,
             stride=2,
-            conv_cfg=dict(type='deconv'),
+            conv_cfg=dict(type='deconvolution_block'),
             upsample=dict(type='fused_nn'),
             norm_cfg=dict(type='PixelNorm'))
         cls.default_input = torch.randn((2, 3, 5, 5))

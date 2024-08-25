@@ -84,7 +84,7 @@ class ContextualAttentionModule(BaseModule):
         Returns:
             tuple(torch.Tensor): Features after contextural attention.
         """
-        # raw features to be used in copy (deconv)
+        # raw features to be used in copy (deconvolution_block)
         raw_context = context
         raw_context_cols = self.im2col(
             raw_context,
@@ -132,7 +132,7 @@ class ContextualAttentionModule(BaseModule):
         raw_context_filter = raw_context_cols.reshape(
             -1, *raw_context_cols.shape[2:])
         output = self.patch_copy_deconv(attention_score, raw_context_filter)
-        # deconv will cause overlap and we need to remove the effects of that
+        # deconvolution_block will cause overlap and we need to remove the effects of that
         overlap_factor = self.calculate_overlap_factor(attention_score)
         output /= overlap_factor
 
@@ -167,7 +167,7 @@ class ContextualAttentionModule(BaseModule):
         return patch_corr.view(n, -1, h_out, w_out)
 
     def patch_copy_deconv(self, attention_score, context_filter):
-        """Copy patches using deconv.
+        """Copy patches using deconvolution_block.
 
         Args:
             attention_score (torch.Tensor): Tensor with shape of (n, l , h, w).
@@ -259,7 +259,7 @@ class ContextualAttentionModule(BaseModule):
         return h_unfold, w_unfold
 
     def calculate_overlap_factor(self, attention_score):
-        """Calculate the overlap factor after applying deconv.
+        """Calculate the overlap factor after applying deconvolution_block.
 
         Args:
             attention_score (torch.Tensor): The attention score with shape of

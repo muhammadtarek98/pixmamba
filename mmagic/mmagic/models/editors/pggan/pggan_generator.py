@@ -38,7 +38,7 @@ class PGGANGenerator(BaseModule):
             Defaults to None.
     """
     _default_fused_upconv_cfg = dict(
-        conv_cfg=dict(type='deconv'),
+        conv_cfg=dict(type='deconvolution_block'),
         kernel_size=3,
         stride=2,
         padding=1,

@@ -98,7 +98,7 @@ class ResnetGenerator(BaseModule):
                     stride=2,
                     padding=1,
                     bias=use_bias,
-                    conv_cfg=dict(type='deconv', output_padding=1),
+                    conv_cfg=dict(type='deconvolution_block', output_padding=1),
                     norm_cfg=norm_cfg)
             ]
 

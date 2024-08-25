@@ -561,7 +561,7 @@ class StableDiffusionXL(BaseModel):
         return add_time_ids
 
     def output_to_pil(self, image) -> List[Image.Image]:
-        """Convert output tensor to PIL image. Output tensor will be deconv-normed
+        """Convert output tensor to PIL image. Output tensor will be deconvolution_block-normed
         to [0, 255] by `DataPreprocessor.destruct`. Due to no `data_samples` is
         passed, color order conversion will not be performed.
 

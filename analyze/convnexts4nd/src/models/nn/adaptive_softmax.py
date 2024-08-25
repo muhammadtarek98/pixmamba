@@ -137,7 +137,7 @@ class ProjectedAdaptiveLogSoftmax(nn.Module):
                 logit = self.drop(logit)
                 logit = logit @ weight.t()
             else:
-                logit = torch.einsum('bd,deconv,ev->bv', (hidden, proj, weight.t()))
+                logit = torch.einsum('bd,deconvolution_block,ev->bv', (hidden, proj, weight.t()))
             if bias is not None:
                 logit = logit + bias
         return logit

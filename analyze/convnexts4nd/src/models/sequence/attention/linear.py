@@ -28,8 +28,8 @@ except:
 def linear_attention(q, k, v, eps=0.0, need_weights=False):
     k_cumsum = k.sum(dim=-2)
     D_inv = 1. / (torch.einsum('...nd,...d->...n', q, k_cumsum.type_as(q)) + eps)
-    context = torch.einsum('...nd,...ne->...deconv', k, v)
-    out = torch.einsum('...deconv,...nd,...n->...ne', context, q, D_inv)
+    context = torch.einsum('...nd,...ne->...deconvolution_block', k, v)
+    out = torch.einsum('...deconvolution_block,...nd,...n->...ne', context, q, D_inv)
     attn = None if not need_weights else torch.einsum('...te,...se,...s->...ts', q, k, D_inv)
     return out, attn
 
