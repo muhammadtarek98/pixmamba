@@ -16,7 +16,7 @@ def import_abspy(name="models", path="classification/"):
     import importlib
     path = os.path.abspath(path)
     assert os.path.isdir(path)
-    sys.path.insert(0, path)
+    sys.path.insert(__index=0, path)
     module = importlib.import_module(name)
     sys.path.pop(0)
     return module
