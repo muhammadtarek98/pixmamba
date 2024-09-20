@@ -7,8 +7,6 @@ from typing import Optional, Callable, Any
 from collections import OrderedDict
 
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
 from einops import rearrange, repeat
 from timm.models.layers import DropPath, trunc_normal_

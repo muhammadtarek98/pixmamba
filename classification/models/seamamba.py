@@ -3,28 +3,16 @@ import math
 import copy
 from functools import partial
 from typing import Optional, Callable
-
 import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import torch.utils.checkpoint as checkpoint
 from einops import rearrange, repeat
-from timm.models.layers import DropPath, trunc_normal_
+from timm.models.layers import trunc_normal_
 from fvcore.nn import FlopCountAnalysis, flop_count_str, flop_count, parameter_count
-DropPath.__repr__ = lambda self: f"timm.DropPath({self.drop_prob})"
 
 # import mamba_ssm.selective_scan_fn (in which causal_conv1d is needed)
-try:
-    from mamba_ssm.ops.selective_scan_interface import selective_scan_fn, selective_scan_ref
-except:
-    pass
-
-# an alternative for mamba_ssm
-try:
-    from selective_scan import selective_scan_fn as selective_scan_fn_v1
-    from selective_scan import selective_scan_ref as selective_scan_ref_v1
-except:
-    pass
+from mamba_ssm.ops.selective_scan_interface import selective_scan_fn, selective_scan_ref
+from selective_scan import selective_scan_fn as selective_scan_fn_v1
+from selective_scan import selective_scan_ref as selective_scan_ref_v1
 
 # fvcore flops =======================================
 def flops_selective_scan_fn(B=1, L=256, D=768, N=16, with_D=True, with_Z=False, with_complex=False):
