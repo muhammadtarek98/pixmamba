@@ -14,7 +14,7 @@ parser.add_argument(
     nargs='+',
     default=[
         'mmagic/.mim', 'mmagic/registry.py', 'mmagic/version.py',
-        '__pycache__', '__init__', '**/__init__.py', '**/stylegan3_ops/*',
+        '__pycache__', '__init__', '**/define_model.py', '**/stylegan3_ops/*',
         '**/conv2d_gradfix.py', '**/grid_sample_gradfix.py', '**/misc.py',
         '**/upfirdn2d.py', '**/all_gather_layer.py', '**/typing.py'
     ])
